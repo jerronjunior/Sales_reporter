@@ -13,8 +13,6 @@ Password: 123456
 
 ---
 
-## Screenshots
-> Run the app and take screenshots to add here.
 
 ---
 
