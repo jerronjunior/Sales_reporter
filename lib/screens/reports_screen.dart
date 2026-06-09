@@ -5,8 +5,8 @@ import '../providers/app_providers.dart';
 import '../widgets/stat_card.dart';
 import '../widgets/app_error_widget.dart';
 
-class DashboardScreen extends ConsumerWidget {
-  const DashboardScreen({super.key});
+class ReportsScreen extends ConsumerWidget {
+  const ReportsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
