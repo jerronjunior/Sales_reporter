@@ -113,9 +113,7 @@ class CustomerState {
   List<Customer> get filtered {
     if (searchQuery.isEmpty) return customers;
     final q = searchQuery.toLowerCase();
-    return customers
-        .where((c) => c.name.toLowerCase().contains(q))
-        .toList();
+    return customers.where((c) => c.name.toLowerCase().contains(q)).toList();
   }
 
   CustomerState copyWith({
@@ -128,13 +126,13 @@ class CustomerState {
     String? searchQuery,
   }) =>
       CustomerState(
-        customers:     customers     ?? this.customers,
-        isLoading:     isLoading     ?? this.isLoading,
+        customers: customers ?? this.customers,
+        isLoading: isLoading ?? this.isLoading,
         isLoadingMore: isLoadingMore ?? this.isLoadingMore,
-        error:         error,
-        currentPage:   currentPage   ?? this.currentPage,
-        hasMore:       hasMore       ?? this.hasMore,
-        searchQuery:   searchQuery   ?? this.searchQuery,
+        error: error,
+        currentPage: currentPage ?? this.currentPage,
+        hasMore: hasMore ?? this.hasMore,
+        searchQuery: searchQuery ?? this.searchQuery,
       );
 }
 
@@ -154,9 +152,9 @@ class CustomerNotifier extends StateNotifier<CustomerState> {
     try {
       final list = await _repo.getCustomers(page: 1);
       state = CustomerState(
-        customers:   list,
+        customers: list,
         currentPage: 1,
-        hasMore:     list.length == CustomerRepository.pageSize,
+        hasMore: list.length == CustomerRepository.pageSize,
       );
     } catch (e) {
       state = CustomerState(error: e.toString());
@@ -170,9 +168,9 @@ class CustomerNotifier extends StateNotifier<CustomerState> {
       final next = state.currentPage + 1;
       final list = await _repo.getCustomers(page: next);
       state = state.copyWith(
-        customers:     [...state.customers, ...list],
-        currentPage:   next,
-        hasMore:       list.length == CustomerRepository.pageSize,
+        customers: [...state.customers, ...list],
+        currentPage: next,
+        hasMore: list.length == CustomerRepository.pageSize,
         isLoadingMore: false,
       );
     } catch (e) {
@@ -212,10 +210,10 @@ class ReportState {
     String? error,
   }) =>
       ReportState(
-        reports:   reports   ?? this.reports,
-        stats:     stats     ?? this.stats,
+        reports: reports ?? this.reports,
+        stats: stats ?? this.stats,
         isLoading: isLoading ?? this.isLoading,
-        error:     error,
+        error: error,
       );
 }
 
@@ -235,7 +233,7 @@ class ReportNotifier extends StateNotifier<ReportState> {
       ]);
       state = ReportState(
         reports: results[0] as List<Report>,
-        stats:   results[1] as DashboardStats,
+        stats: results[1] as DashboardStats,
       );
     } catch (e) {
       state = ReportState(error: e.toString());

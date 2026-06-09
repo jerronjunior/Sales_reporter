@@ -10,7 +10,7 @@ class ReportsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state  = ref.watch(reportProvider);
+    final state = ref.watch(reportProvider);
     final scheme = Theme.of(context).colorScheme;
     final currFmt = NumberFormat.currency(symbol: '\$', decimalDigits: 0);
 
@@ -30,9 +30,8 @@ class ReportsScreen extends ConsumerWidget {
     }
 
     final reports = state.reports;
-    final maxRevenue = reports
-        .map((r) => r.revenue)
-        .reduce((a, b) => a > b ? a : b);
+    final maxRevenue =
+        reports.map((r) => r.revenue).reduce((a, b) => a > b ? a : b);
 
     return RefreshIndicator(
       onRefresh: () => ref.read(reportProvider.notifier).fetchAll(),
@@ -211,8 +210,7 @@ class ReportsScreen extends ConsumerWidget {
                             flex: 3,
                             child: Text(r.month,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14)),
+                                    fontWeight: FontWeight.w500, fontSize: 14)),
                           ),
                           Expanded(
                             flex: 3,

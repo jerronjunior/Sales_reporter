@@ -1,9 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
-  static const _tokenKey     = 'auth_token';
-  static const _userIdKey    = 'user_id';
-  static const _userNameKey  = 'user_name';
+  static const _tokenKey = 'auth_token';
+  static const _userIdKey = 'user_id';
+  static const _userNameKey = 'user_name';
   static const _userEmailKey = 'user_email';
 
   final SharedPreferences _prefs;
@@ -29,8 +29,8 @@ class StorageService {
     await _prefs.setString(_userEmailKey, email);
   }
 
-  int?    getUserId()    => _prefs.getInt(_userIdKey);
-  String? getUserName()  => _prefs.getString(_userNameKey);
+  int? getUserId() => _prefs.getInt(_userIdKey);
+  String? getUserName() => _prefs.getString(_userNameKey);
   String? getUserEmail() => _prefs.getString(_userEmailKey);
 
   // Clear everything on logout

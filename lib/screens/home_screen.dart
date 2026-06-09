@@ -69,9 +69,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         actions: [
           IconButton(
             tooltip: isDark ? 'Switch to light mode' : 'Switch to dark mode',
-            icon: Icon(isDark
-                ? Icons.light_mode_outlined
-                : Icons.dark_mode_outlined),
+            icon: Icon(
+                isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined),
             onPressed: _toggleTheme,
           ),
           IconButton(

@@ -10,11 +10,12 @@ class DashboardScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final auth   = ref.watch(authProvider);
+    final auth = ref.watch(authProvider);
     final report = ref.watch(reportProvider);
     final scheme = Theme.of(context).colorScheme;
     Widget loaderOrError() {
-      if (report.isLoading) return const Center(child: CircularProgressIndicator());
+      if (report.isLoading)
+        return const Center(child: CircularProgressIndicator());
       if (report.error != null) {
         return AppErrorWidget(
           message: report.error!,
@@ -51,14 +52,23 @@ class DashboardScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Welcome back,', style: TextStyle(color: scheme.onPrimary.withOpacity(0.9))),
+                Text('Welcome back,',
+                    style: TextStyle(color: scheme.onPrimary.withOpacity(0.9))),
                 const SizedBox(height: 4),
-                Text(auth.user?.name ?? 'User', style: TextStyle(color: scheme.onPrimary, fontSize: 20, fontWeight: FontWeight.bold)),
+                Text(auth.user?.name ?? 'User',
+                    style: TextStyle(
+                        color: scheme.onPrimary,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)),
               ],
             ),
           ),
           const SizedBox(height: 16),
-          Text('Overview', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700)),
+          Text('Overview',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(fontWeight: FontWeight.w700)),
           const SizedBox(height: 12),
           GridView.count(
             crossAxisCount: 2,
@@ -68,13 +78,29 @@ class DashboardScreen extends ConsumerWidget {
             mainAxisSpacing: 12,
             childAspectRatio: 1.1,
             children: [
-              StatCard(title: 'Customers', value: compact(stats?.totalCustomers), icon: Icons.people_outline, color: Colors.blue),
-              StatCard(title: 'Sales', value: compact(stats?.totalSales), icon: Icons.shopping_bag_outlined, color: Colors.green),
-              StatCard(title: 'Revenue', value: currency(stats?.totalRevenue), icon: Icons.attach_money, color: Colors.orange),
+              StatCard(
+                  title: 'Customers',
+                  value: compact(stats?.totalCustomers),
+                  icon: Icons.people_outline,
+                  color: Colors.blue),
+              StatCard(
+                  title: 'Sales',
+                  value: compact(stats?.totalSales),
+                  icon: Icons.shopping_bag_outlined,
+                  color: Colors.green),
+              StatCard(
+                  title: 'Revenue',
+                  value: currency(stats?.totalRevenue),
+                  icon: Icons.attach_money,
+                  color: Colors.orange),
             ],
           ),
           const SizedBox(height: 18),
-          Text('Recent months', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700)),
+          Text('Recent months',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(fontWeight: FontWeight.w700)),
           const SizedBox(height: 10),
           ...report.reports.reversed.take(4).map((r) => Card(
                 margin: const EdgeInsets.only(bottom: 8),
@@ -82,7 +108,8 @@ class DashboardScreen extends ConsumerWidget {
                   leading: Icon(Icons.calendar_month, color: scheme.primary),
                   title: Text(r.month),
                   subtitle: Text('${r.orders} orders'),
-                  trailing: Text(currency(r.revenue), style: const TextStyle(fontWeight: FontWeight.w700)),
+                  trailing: Text(currency(r.revenue),
+                      style: const TextStyle(fontWeight: FontWeight.w700)),
                 ),
               )),
         ],
@@ -92,6 +119,8 @@ class DashboardScreen extends ConsumerWidget {
     final loader = loaderOrError();
     if (loader is! SizedBox) return loader;
 
-    return RefreshIndicator(onRefresh: () => ref.read(reportProvider.notifier).fetchAll(), child: body);
+    return RefreshIndicator(
+        onRefresh: () => ref.read(reportProvider.notifier).fetchAll(),
+        child: body);
   }
 }

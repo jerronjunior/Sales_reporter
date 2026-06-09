@@ -18,8 +18,7 @@ class CustomerTile extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
       child: ListTile(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         leading: CircleAvatar(
           backgroundColor: scheme.primaryContainer,
           child: Text(
@@ -48,8 +47,7 @@ class CustomerTile extends StatelessWidget {
                   child: Text(
                     customer.email,
                     style: TextStyle(
-                        fontSize: 12,
-                        color: scheme.onSurface.withOpacity(0.6)),
+                        fontSize: 12, color: scheme.onSurface.withOpacity(0.6)),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -64,8 +62,7 @@ class CustomerTile extends StatelessWidget {
                 Text(
                   customer.phone,
                   style: TextStyle(
-                      fontSize: 12,
-                      color: scheme.onSurface.withOpacity(0.6)),
+                      fontSize: 12, color: scheme.onSurface.withOpacity(0.6)),
                 ),
               ],
             ),

@@ -12,10 +12,10 @@ class LoginScreen extends ConsumerStatefulWidget {
 
 class _LoginScreenState extends ConsumerState<LoginScreen>
     with SingleTickerProviderStateMixin {
-  final _formKey    = GlobalKey<FormState>();
-  final _emailCtrl  = TextEditingController(text: 'test@test.com');
-  final _passCtrl   = TextEditingController(text: '123456');
-  bool _obscure     = true;
+  final _formKey = GlobalKey<FormState>();
+  final _emailCtrl = TextEditingController(text: 'test@test.com');
+  final _passCtrl = TextEditingController(text: '123456');
+  bool _obscure = true;
   late AnimationController _shakeCtrl;
   late Animation<double> _shakeAnim;
 
@@ -54,16 +54,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
-    final auth   = ref.watch(authProvider);
+    final auth = ref.watch(authProvider);
     final scheme = Theme.of(context).colorScheme;
-    final size   = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: SizedBox(
-            height: size.height - MediaQuery.of(context).padding.top - MediaQuery.of(context).padding.bottom,
+            height: size.height -
+                MediaQuery.of(context).padding.top -
+                MediaQuery.of(context).padding.bottom,
             child: Column(
               children: [
                 const Spacer(flex: 2),
@@ -103,7 +105,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                     final offset =
                         8 * (0.5 - (_shakeAnim.value - 0.5).abs()) * 2;
                     return Transform.translate(
-                      offset: Offset(offset * (2 * (_shakeAnim.value % 0.5) - 0.5) * 10, 0),
+                      offset: Offset(
+                          offset * (2 * (_shakeAnim.value % 0.5) - 0.5) * 10,
+                          0),
                       child: child,
                     );
                   },

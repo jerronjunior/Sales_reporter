@@ -11,8 +11,8 @@ class AuthRepository {
   bool get isLoggedIn => _storage.isLoggedIn;
 
   User? getStoredUser() {
-    final id    = _storage.getUserId();
-    final name  = _storage.getUserName();
+    final id = _storage.getUserId();
+    final name = _storage.getUserName();
     final email = _storage.getUserEmail();
     if (id == null || name == null) return null;
     return User(id: id, name: name, email: email ?? '');

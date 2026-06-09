@@ -12,8 +12,8 @@ class CustomersScreen extends ConsumerStatefulWidget {
 }
 
 class _CustomersScreenState extends ConsumerState<CustomersScreen> {
-  final _searchCtrl   = TextEditingController();
-  final _scrollCtrl   = ScrollController();
+  final _searchCtrl = TextEditingController();
+  final _scrollCtrl = ScrollController();
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final state  = ref.watch(customerProvider);
+    final state = ref.watch(customerProvider);
     final scheme = Theme.of(context).colorScheme;
 
     return Column(
@@ -87,8 +87,9 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen> {
               : state.error != null
                   ? AppErrorWidget(
                       message: state.error!,
-                      onRetry: () =>
-                          ref.read(customerProvider.notifier).fetch(refresh: true),
+                      onRetry: () => ref
+                          .read(customerProvider.notifier)
+                          .fetch(refresh: true),
                     )
                   : state.filtered.isEmpty
                       ? Center(
@@ -97,16 +98,14 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen> {
                             children: [
                               Icon(Icons.person_search_outlined,
                                   size: 52,
-                                  color:
-                                      scheme.onSurface.withOpacity(0.3)),
+                                  color: scheme.onSurface.withOpacity(0.3)),
                               const SizedBox(height: 12),
                               Text(
                                 _searchCtrl.text.isEmpty
                                     ? 'No customers found'
                                     : 'No results for "${_searchCtrl.text}"',
                                 style: TextStyle(
-                                    color:
-                                        scheme.onSurface.withOpacity(0.5)),
+                                    color: scheme.onSurface.withOpacity(0.5)),
                               ),
                             ],
                           ),
@@ -128,8 +127,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen> {
                                       child: CircularProgressIndicator()),
                                 );
                               }
-                              return CustomerTile(
-                                  customer: state.filtered[i]);
+                              return CustomerTile(customer: state.filtered[i]);
                             },
                           ),
                         ),
