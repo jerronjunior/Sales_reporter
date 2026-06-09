@@ -116,14 +116,7 @@ class DashboardScreen extends ConsumerWidget {
                   icon: Icons.attach_money_rounded,
                   color: const Color(0xFFE65100),
                 ),
-                StatCard(
-                  title: 'Avg. Order',
-                  value: stats != null && stats.totalSales > 0
-                      ? currFmt.format(stats.totalRevenue / stats.totalSales)
-                      : '\$0',
-                  icon: Icons.trending_up_rounded,
-                  color: const Color(0xFF6A1B9A),
-                ),
+                
               ],
             ),
             const SizedBox(height: 24),
