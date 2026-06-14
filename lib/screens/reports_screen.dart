@@ -26,7 +26,7 @@ class ReportsScreen extends ConsumerWidget {
     }
 
     if (state.reports.isEmpty) {
-      return const Center(child: Text('No report data available'));
+      return const Center(child: Text(''));
     }
 
     final reports = state.reports;
