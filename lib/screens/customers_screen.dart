@@ -102,7 +102,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen> {
                               const SizedBox(height: 12),
                               Text(
                                 _searchCtrl.text.isEmpty
-                                    ? 'No customers found'
+                                    ? ''
                                     : 'No results for "${_searchCtrl.text}"',
                                 style: TextStyle(
                                     color: scheme.onSurface.withOpacity(0.5)),
