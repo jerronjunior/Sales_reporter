@@ -103,7 +103,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen> {
                               Text(
                                 _searchCtrl.text.isEmpty
                                     ? 'No customers found'
-                                    : '"${_searchCtrl.text}"',
+                                    : 'No results for "${_searchCtrl.text}"',
                                 style: TextStyle(
                                     color: scheme.onSurface.withOpacity(0.5)),
                               ),
